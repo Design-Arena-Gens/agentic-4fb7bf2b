@@ -1,0 +1,37 @@
+:root{ --bg: #0b1020; --fg: #e6f0ff; --muted: #a3b0c2; --brand: #7ee787; --accent: #7aa2f7; }
+*{ box-sizing: border-box }
+html, body { height: 100% }
+body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; background: radial-gradient(1200px 800px at 50% -10%, #1a2450 0%, #0b1020 50%); color: var(--fg); }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 24px; display: grid; gap: 24px; }
+.header { display: flex; align-items: center; justify-content: space-between; }
+.header h1 { margin: 0; font-size: 28px; letter-spacing: 0.5px; }
+.controls { display: flex; gap: 16px; align-items: center; }
+.primary { background: linear-gradient(180deg, #2dd4bf, #059669); color: white; border: 0; padding: 10px 16px; border-radius: 10px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 20px rgba(45,212,191,0.3); }
+.primary:hover { filter: brightness(1.05) }
+.bpm { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); }
+.bpm input[type=range]{ width: 180px }
+
+.grid { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 10px; }
+.cell { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); padding: 10px; border-radius: 12px; backdrop-filter: blur(6px); }
+.cell.active { outline: 2px solid var(--accent); box-shadow: 0 0 0 4px rgba(122,162,247,0.2) inset }
+.row { display: flex; align-items: center; gap: 8px; }
+.row.sub { opacity: 0.8; font-size: 12px; margin-top: 6px; }
+
+.stage { position: relative; height: 260px; border-radius: 16px; overflow: hidden; background:
+  radial-gradient(80px 40px at 20% 20%, rgba(255,255,255,0.06), transparent 60%),
+  radial-gradient(80px 40px at 80% 30%, rgba(255,255,255,0.05), transparent 60%),
+  linear-gradient(180deg, rgba(14,24,60,0.7), rgba(8,12,30,0.9));
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.snake { position: absolute; left: -10%; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; gap: 4px; animation: slither var(--speed, 8s) linear infinite; }
+.segment { width: 18px; height: 18px; border-radius: 6px; }
+.eyes { width: 8px; height: 8px; border-radius: 999px; background: white; margin-left: 6px; box-shadow: 0 0 6px rgba(255,255,255,0.7) }
+
+@keyframes slither {
+  0% { transform: translateX(-10%) translateY(0) }
+  50% { transform: translateX(55%) translateY(var(--amp, 10px)) }
+  100% { transform: translateX(120%) translateY(0) }
+}
+
+.footer { color: var(--muted); text-align: center; font-size: 13px; padding: 8px 0 24px; }
